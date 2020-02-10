@@ -1,6 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
-import WelcomeScreen from "../WelcomeScreen/WelcomeScreen.jsx";
+import WelcomeScreen from "../WelcomeScreen/WelcomeScreen";
 
 const welcomeButtonHandler = () => {};
 

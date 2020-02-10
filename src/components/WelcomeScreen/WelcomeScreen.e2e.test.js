@@ -1,7 +1,5 @@
-import React from "react";
-import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import WelcomeScreen from "./WelcomeScreen.jsx";
+import WelcomeScreen from "./WelcomeScreen";
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -10,7 +8,7 @@ Enzyme.configure({
 it(`Should welcome button be pressed`, () => {
   const onWelcomeButtonClick = jest.fn();
 
-  const welcomeScreen = shallow(
+  const welcomeScreen = Enzyme.shallow(
       <WelcomeScreen
         errorsCount={3}
         onWelcomeButtonClick={onWelcomeButtonClick}

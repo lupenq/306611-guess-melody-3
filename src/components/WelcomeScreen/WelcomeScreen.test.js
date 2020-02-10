@@ -1,6 +1,4 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import WelcomeScreen from "./WelcomeScreen.jsx";
+import WelcomeScreen from "./WelcomeScreen";
 
 it(`Render WelcomeScreen`, () => {
   const tree = renderer
