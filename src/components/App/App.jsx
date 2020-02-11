@@ -6,7 +6,7 @@ import QuestionGenre from '../QuestionGenre/QuestionGenre';
 const welcomeButtonHandler = () => { };
 
 const App = (props) => {
-  const {errorsCount} = props;
+  const {errorsCount, questions} = props;
 
   return (
     <BrowserRouter>
@@ -18,10 +18,14 @@ const App = (props) => {
           />
         </Route>
         <Route exact path="/dev-artist">
-          <QuestionArtist />
+          <QuestionArtist
+            question={questions[1]}
+          />
         </Route>
         <Route exact path="/dev-genre">
-          <QuestionGenre />
+          <QuestionGenre
+            question={questions[0]}
+          />
         </Route>
       </Switch>
     </BrowserRouter>
@@ -30,6 +34,23 @@ const App = (props) => {
 
 App.propTypes = {
   errorsCount: PropTypes.number.isRequired,
+  questions: PropTypes.arrayOf(
+      PropTypes.shape({
+        type: PropTypes.string,
+        genre: PropTypes.string,
+        answers: PropTypes.arrayOf(
+            PropTypes.shape({
+              src: PropTypes.string,
+              genre: PropTypes.string
+            })
+        )
+      }),
+      PropTypes.shape({
+        type: PropTypes.string,
+        song: PropTypes.object,
+        answers: PropTypes.array
+      })
+  )
 };
 
 

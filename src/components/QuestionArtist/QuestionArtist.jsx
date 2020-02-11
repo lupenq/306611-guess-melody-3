@@ -1,4 +1,4 @@
-const QuestionArtist = () => {
+const QuestionArtist = ({question}) => {
   return (
     <section className="game game--artist">
       <header className="game__header">
@@ -9,7 +9,7 @@ const QuestionArtist = () => {
 
         <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
           <circle className="timer__line" cx="390" cy="390" r="370"
-            style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}} /> 
+            style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}} />
         </svg>
 
         <div className="game__mistakes">
@@ -25,23 +25,46 @@ const QuestionArtist = () => {
           <div className="track">
             <button className="track__button track__button--play" type="button"></button>
             <div className="track__status">
-              <audio></audio>
+              <audio src={question.song.src}></audio>
             </div>
           </div>
         </div>
 
         <form className="game__artist">
-          <div className="artist">
-            <input className="artist__input visually-hidden" type="radio" name="answer" value="artist-1" id="answer-1" />
-            <label className="artist__name" htmlFor="answer-1">
-              <img className="artist__picture" src="http://placehold.it/134x134" alt="Пелагея" />
-              Пелагея
-            </label>
-          </div>
+          {
+            question.answers.map((answer, index) => (
+              <div className="artist"key={answer.artist}>
+                <input
+                  className="artist__input visually-hidden"
+                  type="radio"
+                  name="answer"
+                  value={`answer-${index}`}
+                  id={`answer-${index}`}
+                  onChange={
+                    (e) => {
+                      e.preventDefault();
+                    }
+                  }
+                />
+                <label className="artist__name" htmlFor={`answer-${index}`}>
+                  <img className="artist__picture" src={answer.picture} alt={answer.artist} />
+                  {answer.artist}
+                </label>
+              </div>
+            ))
+          }
         </form>
       </section>
     </section>
   );
+};
+
+QuestionArtist.propTypes = {
+  question: PropTypes.shape({
+    type: PropTypes.string,
+    song: PropTypes.object,
+    answers: PropTypes.array
+  })
 };
 
 export default QuestionArtist;
