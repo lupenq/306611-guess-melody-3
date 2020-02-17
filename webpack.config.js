@@ -1,4 +1,5 @@
 const path = require(`path`);
+const webpack = require(`webpack`);
 
 module.exports = {
   entry: `./src/index.js`,
@@ -11,6 +12,7 @@ module.exports = {
     open: true,
     inline: true,
     port: 1337,
+    historyApiFallback: true
   },
   module: {
     rules: [
@@ -24,4 +26,13 @@ module.exports = {
     ],
   },
   devtool: `source-map`,
+  resolve: {
+    extensions: [`.js`, `.jsx`]
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      'React': `react`,
+      'PropTypes': `prop-types`
+    })
+  ],
 };
