@@ -1,5 +1,5 @@
 import Adapter from "enzyme-adapter-react-16";
-import WelcomeScreen from "./WelcomeScreen";
+import WelcomeScreen from "./welcome-screen";
 
 Enzyme.configure({
   adapter: new Adapter(),

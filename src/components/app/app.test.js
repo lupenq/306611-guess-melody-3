@@ -1,4 +1,4 @@
-import App from "./App";
+import App from "./app";
 
 it(`Render App`, () => {
   const tree = renderer

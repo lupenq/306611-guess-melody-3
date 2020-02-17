@@ -1,4 +1,4 @@
-import WelcomeScreen from "./WelcomeScreen";
+import WelcomeScreen from "./welcome-screen";
 
 it(`Render WelcomeScreen`, () => {
   const tree = renderer
